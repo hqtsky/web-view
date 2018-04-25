@@ -56,7 +56,7 @@ pub fn run<'a, T: 'a,
 	F: FnMut(&mut WebView<'a, T>, &str, &mut T) + 'a,
 	C: AsRef<str>
 >(
-	title: &str, content: Content<C>, size: Option<(i32, i32)>, resizable: bool, titlebar_transparent: bool, debug: bool, init_cb: I, ext_cb: F, user_data: T
+	  title: &str, content: Content<C>, size: Option<(i32, i32)>, resizable: bool, debug: bool, titlebar_transparent: bool, init_cb: I, ext_cb: F, user_data: T
 ) -> (T, bool) {
 	let (width, height) = size.unwrap_or((800, 600));
 	let fullscreen = size.is_none();
