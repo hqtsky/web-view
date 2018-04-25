@@ -5,7 +5,7 @@ void wrapper_webview_free(struct webview* w) {
 	free(w);
 }
 
-struct webview* wrapper_webview_new(const char* title, const char* url, int width, int height, int resizable, int debug, webview_external_invoke_cb_t external_invoke_cb, void* userdata) {
+struct webview* wrapper_webview_new(const char* title, const char* url, int width, int height, int resizable, int debug, int titlebar_transparent, webview_external_invoke_cb_t external_invoke_cb, void* userdata) {
 	struct webview* w = (struct webview*)calloc(1, sizeof(*w));
 	w->width = width;
 	w->height = height;
@@ -13,6 +13,7 @@ struct webview* wrapper_webview_new(const char* title, const char* url, int widt
 	w->url = url;
 	w->resizable = resizable;
 	w->debug = debug;
+  w->titlebar_transparent = titlebar_transparent;
 	w->external_invoke_cb = external_invoke_cb;
 	w->userdata = userdata;
 	if (webview_init(w) != 0) {

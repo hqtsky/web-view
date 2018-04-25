@@ -56,7 +56,7 @@ pub fn run<'a, T: 'a,
 	F: FnMut(&mut WebView<'a, T>, &str, &mut T) + 'a,
 	C: AsRef<str>
 >(
-	title: &str, content: Content<C>, size: Option<(i32, i32)>, resizable: bool, debug: bool, init_cb: I, ext_cb: F, user_data: T
+	title: &str, content: Content<C>, size: Option<(i32, i32)>, resizable: bool, titlebar_transparent: bool, debug: bool, init_cb: I, ext_cb: F, user_data: T
 ) -> (T, bool) {
 	let (width, height) = size.unwrap_or((800, 600));
 	let fullscreen = size.is_none();
@@ -73,7 +73,7 @@ pub fn run<'a, T: 'a,
 	});
 	let webview = unsafe {
 		wrapper_webview_new(
-			title.as_ptr(), url.as_ptr(), width, height, resizable as c_int, debug as c_int,
+			title.as_ptr(), url.as_ptr(), width, height, resizable as c_int, debug as c_int, titlebar_transparent as c_int,
 			Some(transmute(handler_ext::<T> as ExternalInvokeFn<T>)),
 			&mut *handler_data as *mut _ as *mut c_void
 		)
