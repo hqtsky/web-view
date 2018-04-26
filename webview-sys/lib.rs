@@ -38,4 +38,5 @@ extern {
 	pub fn webview_inject_css(this: *mut CWebView, css: *const c_char) -> c_int;
 	pub fn webview_set_fullscreen(this: *mut CWebView, fullscreen: c_int);
 	pub fn webview_dialog(this: *mut CWebView, dialog_type: DialogType, flags: DialogFlags, title: *const c_char, arg: *const c_char, result: *mut c_char, result_size: usize);
+  pub fn webview_set_background_color(this: *mut CWebView, r: c_float, g: c_float, b: c_float, a: c_float);
 }

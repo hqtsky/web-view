@@ -123,6 +123,10 @@ impl<'a, T> WebView<'a, T> {
 		data
 	}
 
+  pub fn set_background_color(&mut self, r: f32, g: f32, b: f32, a: f32) {
+      unsafe { webview_set_background_color(self.erase(), r as c_float, g as c_float, b as c_float, a as c_float) }
+  }
+
 	pub fn terminate(&mut self) {
 		unsafe { webview_terminate(self.erase()) }
 	}
