@@ -110,6 +110,10 @@ impl<'a, T> MyUnique<WebView<'a, T>> {
 	pub fn dispatch<F: for<'b> FnMut(&mut WebView<'b, T>, &mut T) + Send /*+ 'a*/>(&self, f: F) {
 		unsafe { &mut *self.0 }.dispatch(f);
 	}
+
+  pub fn set_background_color(&mut self, r: f32, g: f32, b: f32, a: f32) {
+    unsafe { &mut *self.0 }.set_background_color(r, g, b, a);
+  }
 }
 
 impl<'a, T> WebView<'a, T> {
